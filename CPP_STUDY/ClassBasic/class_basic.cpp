@@ -24,12 +24,15 @@ public: //클래스외/내부 모두 접근가능함.
 	//	m_nGear = 0;
 	//	m_nSpeed = 0;
 	//}
-	CCar(string color = "gray", int gear = 0, int speed = 0)
+	//자동차를 주문할때, 기어나 속도를 못한다.
+	//CCar(string color = "gray", int gear = 0, int speed = 0)
+	CCar(string color = "gray")
 	{
-		cout << "Car("<<color<<","<<gear<<","<< speed<<"):"<< this << endl;
-		m_strColor = color;
-		m_nGear = gear;
-		m_nSpeed = speed;
+		//cout << "Car("<<color<<","<<gear<<","<< speed<<"):"<< this << endl;
+		//m_nGear = gear;
+		//m_nSpeed = speed;
+		cout << "Car(" << color<<"):" << this << endl;
+		m_strColor = color;	
 	}
 	//객체(인스턴스): 클래스를 이용하여 할당된 메모리(한번 사용되고 소멸되는 것)
 	//소멸자: 객체가 소멸될때
@@ -37,7 +40,16 @@ public: //클래스외/내부 모두 접근가능함.
 	{
 		cout << "~Car("<<m_strColor<<"):"<< this << endl;
 	}
-
+	//setter/getter: private멤버에 접근하거나 설정하는데 사용됨.
+	//속도는 자동차의 상태에 따라 결정되는것 이므로 getter와 setter가 있어서는 안된다.
+	void SetColor(string color)
+	{
+		m_strColor = color;
+	}
+	string GetColor()
+	{
+		return m_strColor;
+	}
 	void SetGear(int gear)
 	{
 		m_nGear = gear;
@@ -58,16 +70,16 @@ public: //클래스외/내부 모두 접근가능함.
 	}
 };
 
-void main()
+void CarMain()
 {
-	
 	CCar cCar("red");
 	CCar* pCar = new CCar("blue");
-	CCar arrCar[3] = { CCar("green"),CCar("yellow"), CCar("white")};
-	static CCar static_cCar("pink"); //정적지역변수는 가장 마지막에 소멸됨.
-	static CCar static_cCarA("deeppink"); //정적지역변수는 가장 마지막에 소멸됨.
-	static CCar static_cCarB("lowpink"); //정적지역변수는 가장 마지막에 소멸됨.
-
+	CCar arrCar[3] = { CCar("green"),CCar("yellow"), CCar("white") };
+	//정적지역변수는 가장 마지막에 소멸됨. 
+	//정적지역변수가 여러개일때는 먼저생성된 정적변수가 먼저 소멸됨.
+	static CCar static_cCar("pink");
+	static CCar static_cCarA("deeppink");
+	static CCar static_cCarB("lowpink");
 	//cCar.m_nSpeed = 0; //은닉
 	cCar.Display();
 	cCar.SetGear(CCar::E_GEAR_STATE::D);
@@ -86,4 +98,20 @@ void main()
 	pCar->Display();
 
 	delete pCar;
+}
+//다음 시나리오에 맞게 자동차 클래스를 생성해보기
+//1. 색상을 지정한다.
+//2. 자동차를 제조한다.
+//3. 자동차를 사용한다.
+void CarOrderMain()
+{
+
+}
+//TV클래스를 작성하고 TV를 조작하듯 클래스를 활용하기 - 과제재출하기
+//https://classroom.google.com/c/MTU0MTc2ODE4MjY1/a/MjU1MTI1Mzc3NzA3/details
+
+void main()
+{
+	//CarMain();
+	CarOrderMain();
 }
