@@ -25,15 +25,14 @@ namespace Mokeup
 	public:
 		string(const char* str)
 		{
+			cout << "MokeupString["<<this<<"]:"<< str << endl;
 			int nSize = strlen(str);
 			m_pStr = new char[nSize];
 			strcpy(m_pStr, str);
-			cout << "MokeupString[" << this << "]:" << (int)m_pStr << endl;
-
 		}
 		~string()
 		{
-			cout << "~MokeupString[" << this << "]:"<< (int)m_pStr << endl;
+			cout << "~MokeupString[" << this << "]" << endl;
 			delete[] m_pStr;
 		}
 		const char* c_str()
