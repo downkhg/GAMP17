@@ -3,9 +3,9 @@
 
 using namespace std;
 
-//자동차
+//자동차 추상화하기
 //속성(변경될수 있는 것): 속도, 기어
-//동작: 가속(엑셀), 감속(브레이크)
+//동작: 가속(엑셀), 감속(브레이크), 기어변경(setter)
 class CCar
 {
 //private: //클래스내부에만 접근 가능함.
@@ -105,13 +105,42 @@ void CarMain()
 //3. 자동차를 사용한다.
 void CarOrderMain()
 {
-
+	////다음 시나리오는 차를 색상을 정하고 나중에 변경하는것.
+	////일반적인 사람들은 이렇게까지 하지않음.
+	//CCar cCar;
+	//string strColor;
+	//cCar.SetColor(strColor);
+	string strColor;
+	cout << "InputColor:";
+	cin >> strColor;
+	CCar cCar(strColor);
+	//기어를 변경하고 운행한다.
+	//적당히 속도위반을하지않도록 가속하고 속도를 확인한다.
+	cCar.SetGear(CCar::E_GEAR_STATE::D);
+	cCar.Accelerator();
+	cCar.Accelerator();
+	cCar.Accelerator();
+	cCar.Accelerator();
+	cCar.Accelerator();
+	cCar.Display();
+	//신호에 걸렸다. 자동차가 멈출때까지 속도를 확인하며 브레이크를 밟는다.
+	cCar.Break();
+	cCar.Display();
+	cCar.Break();
+	cCar.Display();
+	cCar.Break();
+	cCar.Display();
+	cCar.Break();
+	cCar.Display();
+	cCar.Break();
+	cCar.Display();
+	cCar.SetGear(CCar::E_GEAR_STATE::N);
 }
 //TV클래스를 작성하고 TV를 조작하듯 클래스를 활용하기 - 과제재출하기
 //https://classroom.google.com/c/MTU0MTc2ODE4MjY1/a/MjU1MTI1Mzc3NzA3/details
 
 void main()
 {
-	//CarMain();
-	CarOrderMain();
+	CarMain();
+	//CarOrderMain();
 }
