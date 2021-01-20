@@ -34,6 +34,11 @@ public: //클래스외/내부 모두 접근가능함.
 		cout << "Car(" << color<<"):" << this << endl;
 		m_strColor = color;	
 	}
+	CCar(CCar& car)
+	{
+		*this = car;
+		cout << "Car Copy (<<"<< this <<")"<<endl;
+	}
 	//객체(인스턴스): 클래스를 이용하여 할당된 메모리(한번 사용되고 소멸되는 것)
 	//소멸자: 객체가 소멸될때
 	~CCar()
@@ -46,7 +51,7 @@ public: //클래스외/내부 모두 접근가능함.
 	{
 		m_strColor = color;
 	}
-	string GetColor()
+	string GetColor()  const
 	{
 		return m_strColor;
 	}
@@ -62,7 +67,7 @@ public: //클래스외/내부 모두 접근가능함.
 	{
 		m_nSpeed--;
 	}
-	void Display()
+	void Display() const  //멤버변수를 변경할수없는 함수
 	{
 		cout << "Color:" << m_strColor << endl;
 		cout << "Speed:" << m_nSpeed << endl;
@@ -70,35 +75,35 @@ public: //클래스외/내부 모두 접근가능함.
 	}
 };
 
-void CarMain()
-{
-	CCar cCar("red");
-	CCar* pCar = new CCar("blue");
-	CCar arrCar[3] = { CCar("green"),CCar("yellow"), CCar("white") };
-	//정적지역변수는 가장 마지막에 소멸됨. 
-	//정적지역변수가 여러개일때는 먼저생성된 정적변수가 먼저 소멸됨.
-	static CCar static_cCar("pink");
-	static CCar static_cCarA("deeppink");
-	static CCar static_cCarB("lowpink");
-	//cCar.m_nSpeed = 0; //은닉
-	cCar.Display();
-	cCar.SetGear(CCar::E_GEAR_STATE::D);
-	cCar.Accelerator();
-	cCar.Display();
-	cCar.Break();
-	cCar.SetGear(CCar::E_GEAR_STATE::P);
-	cCar.Display();
-
-	pCar->Display();
-	pCar->SetGear(CCar::E_GEAR_STATE::D);
-	pCar->Display();
-	pCar->Accelerator();
-	pCar->Break();
-	pCar->SetGear(CCar::E_GEAR_STATE::P);
-	pCar->Display();
-
-	delete pCar;
-}
+//void CarMain()
+//{
+//	CCar cCar("red");
+//	CCar* pCar = new CCar("blue");
+//	CCar arrCar[3] = { CCar("green"),CCar("yellow"), CCar("white") }; //복사생성자 정의시 오류남.
+//	//정적지역변수는 가장 마지막에 소멸됨. 
+//	//정적지역변수가 여러개일때는 먼저생성된 정적변수가 먼저 소멸됨.
+//	static CCar static_cCar("pink");
+//	static CCar static_cCarA("deeppink");
+//	static CCar static_cCarB("lowpink");
+//	//cCar.m_nSpeed = 0; //은닉
+//	cCar.Display();
+//	cCar.SetGear(CCar::E_GEAR_STATE::D);
+//	cCar.Accelerator();
+//	cCar.Display();
+//	cCar.Break();
+//	cCar.SetGear(CCar::E_GEAR_STATE::P);
+//	cCar.Display();
+//
+//	pCar->Display();
+//	pCar->SetGear(CCar::E_GEAR_STATE::D);
+//	pCar->Display();
+//	pCar->Accelerator();
+//	pCar->Break();
+//	pCar->SetGear(CCar::E_GEAR_STATE::P);
+//	pCar->Display();
+//
+//	delete pCar;
+//}
 //다음 시나리오에 맞게 자동차 클래스를 생성해보기
 //1. 색상을 지정한다.
 //2. 자동차를 제조한다.
@@ -139,8 +144,45 @@ void CarOrderMain()
 //TV클래스를 작성하고 TV를 조작하듯 클래스를 활용하기 - 과제재출하기
 //https://classroom.google.com/c/MTU0MTc2ODE4MjY1/a/MjU1MTI1Mzc3NzA3/details
 
+void ConstCarMain()
+{
+	const CCar cCar("red");
+
+	//cCar.Accelerator(); //객체의 변수값을 변경할수없다.
+	//cCar.SetColor("test");
+}
+
+void SwapCar(CCar a, CCar b)
+{
+	CCar temp = a;
+	a = b;
+	b = temp;
+}
+
+void SwapCarRef(CCar& a, CCar& b)
+{
+	CCar temp = a;
+	a = b;
+	b = temp;
+}
+//객체도 매개변수로 전달될때 복사된다.
+void CarFuncionMain()
+{
+	CCar cCarA("red");
+	CCar cCarB("blue");
+	cCarA.Display();
+	cCarB.Display();
+	SwapCar(cCarA, cCarB);
+	cCarA.Display();
+	cCarB.Display();
+	SwapCarRef(cCarA, cCarB);
+	cCarA.Display();
+	cCarB.Display();
+}
+
 void main()
 {
-	CarMain();
+	//CarMain();
 	//CarOrderMain();
+	CarFuncionMain();
 }
