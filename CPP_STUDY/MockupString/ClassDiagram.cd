@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Mokeup::string">
-    <Position X="4.5" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAAEAgAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAABAAAAEAoAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>MockupString.cpp</FileName>
     </TypeIdentifier>
   </Class>

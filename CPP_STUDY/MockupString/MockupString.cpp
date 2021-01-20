@@ -28,16 +28,23 @@ namespace Mokeup
 		string(const char* str)
 		{
 			int nSize = strlen(str);
-			m_pStr = new char[nSize];
+			m_pStr = new char[nSize+1];
 			strcpy(m_pStr, str);
 			cout << "MokeupString[" << this << "]:" << (int)m_pStr << endl;
-
 		}
 		//복사생성자: 객체가 복사될때 호출되는 함수
 		string(string& str)
 		{
 			//*this = str;//얕은복사: 객체의 값을 메모리 그대로 복사함.
 			//깊은복사: 새로운메모리를 동적할당해서 기존객체의 문자열을 복사함.
+			int nSize = str.size();
+			m_pStr = new char[nSize + 1];
+			strcpy(m_pStr, str.c_str());
+			cout << "MokeupString Copy[" << this << "]:" << (int)m_pStr << endl;
+		}
+		int size()
+		{
+			return strlen(m_pStr);
 		}
 		~string()
 		{
