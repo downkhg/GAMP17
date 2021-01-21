@@ -6,6 +6,9 @@ using namespace std;
 //자동차 추상화하기
 //속성(변경될수 있는 것): 속도, 기어
 //동작: 가속(엑셀), 감속(브레이크), 기어변경(setter)
+//자동차가 생산될때마다 각객체에서 생산된 자동차의 수를 확인하도록 만들기. 폐차되면 카운트 감소.
+//생산: 생성자,복사생성자 폐차: 소멸자
+//외부 기호를 확인할 수 없습니다.: 함수의 선언만 하고 정의하지않을때.
 class CCar
 {
 //private: //클래스내부에만 접근 가능함.
@@ -13,6 +16,7 @@ class CCar
 	string m_strColor;
 	int m_nSpeed = 0;
 	int m_nGear= 0;
+	static int m_nCount;// = 0; //정적멤버변수의 선언
 public: //클래스외/내부 모두 접근가능함.
 	enum E_GEAR_STATE { P, R, N ,D, ONE, TWO};
 	//클래스생성시 기본값을 지정할때 사용.
@@ -31,19 +35,28 @@ public: //클래스외/내부 모두 접근가능함.
 		//cout << "Car("<<color<<","<<gear<<","<< speed<<"):"<< this << endl;
 		//m_nGear = gear;
 		//m_nSpeed = speed;
-		cout << "Car(" << color<<"):" << this << endl;
+		m_nCount++;
+		cout << "Car(" << color<<")["<<m_nCount<<"]:" << this << endl;
 		m_strColor = color;	
 	}
 	CCar(CCar& car)
 	{
 		*this = car;
-		cout << "Car Copy (<<"<< this <<")"<<endl;
+		m_nCount++;
+		cout << "CarCopy(" << this->m_strColor << ")[" << m_nCount << "]:" << this << endl;
 	}
 	//객체(인스턴스): 클래스를 이용하여 할당된 메모리(한번 사용되고 소멸되는 것)
 	//소멸자: 객체가 소멸될때
 	~CCar()
 	{
-		cout << "~Car("<<m_strColor<<"):"<< this << endl;
+		m_nCount--;
+		cout << "~Car("<<m_strColor<<":[" << m_nCount << "]:"<< this << endl;
+	}
+	static int GetCount()//정적멤버변수: 객체생성전에 접근가능한 함수다.
+	{
+		//일반멤버변수는 객체가 생성되야만 존재가능하지만, 이함수는 객체 생성전에 호출이 가능해야함. 그러므로 이러한 호출은 불가함.
+		//m_nSpeed++; 
+		return m_nCount;
 	}
 	//setter/getter: private멤버에 접근하거나 설정하는데 사용됨.
 	//속도는 자동차의 상태에 따라 결정되는것 이므로 getter와 setter가 있어서는 안된다.
@@ -75,35 +88,43 @@ public: //클래스외/내부 모두 접근가능함.
 	}
 };
 
-//void CarMain()
-//{
-//	CCar cCar("red");
-//	CCar* pCar = new CCar("blue");
-//	CCar arrCar[3] = { CCar("green"),CCar("yellow"), CCar("white") }; //복사생성자 정의시 오류남.
-//	//정적지역변수는 가장 마지막에 소멸됨. 
-//	//정적지역변수가 여러개일때는 먼저생성된 정적변수가 먼저 소멸됨.
-//	static CCar static_cCar("pink");
-//	static CCar static_cCarA("deeppink");
-//	static CCar static_cCarB("lowpink");
-//	//cCar.m_nSpeed = 0; //은닉
-//	cCar.Display();
-//	cCar.SetGear(CCar::E_GEAR_STATE::D);
-//	cCar.Accelerator();
-//	cCar.Display();
-//	cCar.Break();
-//	cCar.SetGear(CCar::E_GEAR_STATE::P);
-//	cCar.Display();
-//
-//	pCar->Display();
-//	pCar->SetGear(CCar::E_GEAR_STATE::D);
-//	pCar->Display();
-//	pCar->Accelerator();
-//	pCar->Break();
-//	pCar->SetGear(CCar::E_GEAR_STATE::P);
-//	pCar->Display();
-//
-//	delete pCar;
-//}
+int CCar::m_nCount = 0; //정적멤버변수의 정의
+//정적멤버변수는 객체 생성전에 있어야한다. 그러므로 전역변수로 정의해야만 사용가능하다.
+
+void CarMain()
+{
+	cout << "CarCount:" << CCar::GetCount() << endl;
+	CCar cCar("red");
+	cout << "CarCount:"<<cCar.GetCount() << endl;
+	CCar* pCar = NULL;
+	cout << "CarCount:" << pCar->GetCount() << endl;//포인터가 비어있더라도 정적멤버는 접근 가능하므로 컴파일오류가 나지않음.
+	pCar = new CCar("blue");
+	CCar arrCar[3];// = { CCar("green"),CCar("yellow"), CCar("white") }; //복사생성자 정의시 오류남.
+	//정적지역변수는 가장 마지막에 소멸됨. 
+	//정적지역변수가 여러개일때는 먼저생성된 정적변수가 먼저 소멸됨.
+	static CCar static_cCar("pink");
+	static CCar static_cCarA("deeppink");
+	static CCar static_cCarB("lowpink");
+	cout << "CarCount:" << static_cCarB.GetCount() << endl;
+	//cCar.m_nSpeed = 0; //은닉
+	cCar.Display();
+	cCar.SetGear(CCar::E_GEAR_STATE::D);
+	cCar.Accelerator();
+	cCar.Display();
+	cCar.Break();
+	cCar.SetGear(CCar::E_GEAR_STATE::P);
+	cCar.Display();
+
+	pCar->Display();
+	pCar->SetGear(CCar::E_GEAR_STATE::D);
+	pCar->Display();
+	pCar->Accelerator();
+	pCar->Break();
+	pCar->SetGear(CCar::E_GEAR_STATE::P);
+	pCar->Display();
+
+	delete pCar;
+}
 //다음 시나리오에 맞게 자동차 클래스를 생성해보기
 //1. 색상을 지정한다.
 //2. 자동차를 제조한다.
@@ -182,7 +203,7 @@ void CarFuncionMain()
 
 void main()
 {
-	//CarMain();
+	CarMain();
 	//CarOrderMain();
-	CarFuncionMain();
+	//CarFuncionMain();
 }
