@@ -39,6 +39,7 @@ public: //클래스외/내부 모두 접근가능함.
 		cout << "Car(" << color<<")["<<m_nCount<<"]:" << this << endl;
 		m_strColor = color;	
 	}
+//public:
 	CCar(CCar& car)
 	{
 		*this = car;
@@ -47,11 +48,13 @@ public: //클래스외/내부 모두 접근가능함.
 	}
 	//객체(인스턴스): 클래스를 이용하여 할당된 메모리(한번 사용되고 소멸되는 것)
 	//소멸자: 객체가 소멸될때
+//private:
 	~CCar()
 	{
 		m_nCount--;
 		cout << "~Car("<<m_strColor<<":[" << m_nCount << "]:"<< this << endl;
 	}
+public:
 	static int GetCount()//정적멤버변수: 객체생성전에 접근가능한 함수다.
 	{
 		//일반멤버변수는 객체가 생성되야만 존재가능하지만, 이함수는 객체 생성전에 호출이 가능해야함. 그러므로 이러한 호출은 불가함.
