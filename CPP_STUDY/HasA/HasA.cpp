@@ -127,7 +127,7 @@ void LabatoryMain()
 	//학생목록을 이용하여 연구원과 연구소를 시나리오를 모델링해보고 만들어보자.
 	vector<CStudent*> students; 
 
-	students.push_back(new CStudent("A", 1));
+	students.push_back(students[0]);
 
 	CLabatoryRefStudent cLabatory;
 	cLabatory.SetChife(students[0]);
