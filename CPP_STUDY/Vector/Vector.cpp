@@ -21,6 +21,10 @@ public:
 		this->x = x;
 		this->y = y;
 	}
+	//연산자오버로딩: 연산자를 재정의하는 것.
+	//연산결과: 리턴값
+	//연산자: operator기호
+	//오른쪽피연산자: 매개변수
 	CVector operator+(CVector v)
 	{
 		CVector temp(this->x + v.x, this->y + v.y);
@@ -36,10 +40,12 @@ public:
 		CVector temp(this->x * dist, this->y * dist);
 		return temp;
 	}
+	//피연산자가 2개이상일때는 프랜즈연산자를 이용해야함.
 	friend CVector operator*(float dist, CVector v)//스칼라곱(교환법칙)
 	{
 		return CVector(v.x * dist, v.y * dist);
 	}
+	//비교연산자만들기
 	float operator[](int idx)
 	{
 		if (idx == 0) return x;
@@ -81,13 +87,16 @@ void VectorMain()
 	vA = vPA - vPB;
 	vA.Print("A");
 	CVector vDir = vA.Normarlize();
-	CVector fDist = vA.Magnitude();
+	float fDist = vA.Magnitude();
 	vDir.Print("Dir");
-	fDist.Print("Dist");
+	cout << "Dist:"<< fDist << endl;
 	//곱하기
 	vA.Print("A");
-	//vA = fDist * vDir;
+	vA = fDist * vDir;
 	vA.Print("A");
+	//다음과 같이 사용가능하나 예외가 발생할수있으므로 좋지않음.
+	cout << "A[0,1](" << vA[0] << ","<< vA[1] << ")" << endl;
+	cout << "A['x','y'](" << vA['x'] << "," << vA['y'] << ")" << endl;
 }
 
 void main()
