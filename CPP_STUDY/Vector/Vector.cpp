@@ -13,7 +13,10 @@ class CVector
 public:
 	float x;
 	float y;
-	CVector(float x = 0, float y = 0)
+	//벡터는 멤버를 1개만 셋팅하는 경우는 없으므로 인테페이스를 다음과 같이 정의해야
+	//계산한 float값이 멤버 x에만 들어가는 현상을 막을수있다.
+	CVector() { x = 0; y = 0; }
+	CVector(float x, float y)
 	{
 		this->x = x;
 		this->y = y;
@@ -78,12 +81,12 @@ void VectorMain()
 	vA = vPA - vPB;
 	vA.Print("A");
 	CVector vDir = vA.Normarlize();
-	float fDist = vA.Magnitude();
+	CVector fDist = vA.Magnitude();
 	vDir.Print("Dir");
-	cout << "Dist:" << fDist << endl;
+	fDist.Print("Dist");
 	//곱하기
 	vA.Print("A");
-	vA = fDist * vDir;
+	//vA = fDist * vDir;
 	vA.Print("A");
 }
 
