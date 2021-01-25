@@ -45,10 +45,12 @@ namespace Mokeup
 			strcpy(m_pStr, str.c_str());
 			cout << "MokeupString Copy[" << this << "]:" << (int)m_pStr << endl;
 		}
+		//대입연산자: 대입이 될때 호출됨. 객체가 메모리복사되며 기존의 동적할당된 메모리가 누수된다.
 		void operator=(string& str)
 		{
 			int nSize = str.size();
-			if (nSize != size())
+			//기존에 문자열길이와 같다면 동적할당을 새롭게하지않고 덮어씌운다.
+			if (nSize != this->size())
 			{
 				delete[] m_pStr; //기존메모리제거한다.
 				m_pStr = new char[nSize + 1];
