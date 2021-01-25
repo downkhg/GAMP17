@@ -48,7 +48,7 @@ namespace Mokeup
 		void operator=(string& str)
 		{
 			int nSize = str.size();
-			if (nSize != str.size())
+			if (nSize != size())
 			{
 				delete[] m_pStr; //기존메모리제거한다.
 				m_pStr = new char[nSize + 1];
