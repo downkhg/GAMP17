@@ -40,6 +40,10 @@ public:
 		CVector temp(this->x * dist, this->y * dist);
 		return temp;
 	}
+	bool operator==(CVector v)
+	{
+		return (this->x == v.x && this->y == v.y);
+	}
 	//피연산자가 2개이상일때는 프랜즈연산자를 이용해야함.
 	friend CVector operator*(float dist, CVector v)//스칼라곱(교환법칙)
 	{
@@ -97,6 +101,11 @@ void VectorMain()
 	//다음과 같이 사용가능하나 예외가 발생할수있으므로 좋지않음.
 	cout << "A[0,1](" << vA[0] << ","<< vA[1] << ")" << endl;
 	cout << "A['x','y'](" << vA['x'] << "," << vA['y'] << ")" << endl;
+
+	if (vA == vPA)
+	{
+
+	}
 }
 
 void main()
