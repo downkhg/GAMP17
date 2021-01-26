@@ -1,7 +1,13 @@
 #pragma once
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 namespace NotIsA
 {
+	//중복된 부분이 많으므로 공통적인부분을 부모클래스로 만든다.
+	//->CarIsA.h
 	class CBike
 	{
 		int m_nGear;
@@ -10,7 +16,12 @@ namespace NotIsA
 	public:
 		CBike(int seat)
 		{
+			cout << "CBike:" << this << endl;
 			m_nSeat = seat;
+		}
+		~CBike()
+		{
+			cout << "CBike:" << this << endl;
 		}
 		void Accelerator()
 		{
@@ -35,8 +46,13 @@ namespace NotIsA
 	public:
 		CAutoBike(int engine, int seat)
 		{
+			cout << "CAutoBike:" << this << endl;
 			m_nEngine = engine;
 			m_nSeat = seat;
+		}
+		~CAutoBike()
+		{
+			cout << "CAutoBike:" << this << endl;
 		}
 		void Accelerator()
 		{
@@ -61,8 +77,13 @@ namespace NotIsA
 	public:
 		CBus(int engine, int seat)
 		{
+			cout << "CBus:" << this << endl;
 			m_nEngine = engine;
 			m_nSeat = seat;
+		}
+		~CBus()
+		{
+			cout << "~CBus:" << this << endl;
 		}
 		void Accelerator()
 		{
@@ -88,9 +109,14 @@ namespace NotIsA
 	public:
 		CTruck(int engine, int seat, int weight)
 		{
+			cout << "CTruck:" << this << endl;
 			m_nEngine = engine;
 			m_nSeat = seat;
 			m_nWeight = weight;
+		}
+		~CTruck()
+		{
+			cout << "~CTruck:" << this << endl;
 		}
 		void Accelerator()
 		{
@@ -109,4 +135,12 @@ namespace NotIsA
 			return m_nWeight;
 		}
 	};
+
+	void CarIsATestMain()
+	{
+		CBike cBike(1);
+		CAutoBike cAutoBike(2, 900);
+		CBus cBus(20, 5000);
+		CTruck cTruck(2, 5000, 1000);
+	}
 }
