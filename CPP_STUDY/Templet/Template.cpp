@@ -48,6 +48,11 @@ void TemplateMain()
 	nBox2.SetData(20);
 	cout << nBox2.GetData() << endl;
 
+	float fA = 0.1f;
+	float fB = 0.2f;
+
+	Swap(fA, fB);
+
 	Swap(nBox, nBox2);
 	cout << nBox.GetData() << endl;
 	cout << nBox2.GetData() << endl;
@@ -55,7 +60,6 @@ void TemplateMain()
 	Pear<string, float> cPear("PI", 3.14f);
 	cout << cPear["PI"] << endl;
 }
-
 
 void main()
 {
