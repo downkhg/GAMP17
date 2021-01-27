@@ -46,5 +46,11 @@
     <None Include="CarIsA_Hierarchy.cd">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="RadioIsA.cd">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="RadioHasA.cd">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

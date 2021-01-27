@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RadioHasA::CSpeaker">
+    <Position X="2" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAKAAAAAAAAAAAAQAGAAAAAAAIAAgAAA=</HashCode>
+      <FileName>RadioHasA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioHasA::CAntena">
+    <Position X="2" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RadioHasA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioHasA::CRadio">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEACAAAQAAAAAAAAAAAAAEAAACAAA=</HashCode>
+      <FileName>RadioHasA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
