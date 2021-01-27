@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HierarchyIsA::CVehicle">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAACAAEEEgAAAAAAAAAAAAAAAAAAQEA=</HashCode>
+      <FileName>CarIiA_Hierarchy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HierarchyIsA::CEnginer">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>CarIiA_Hierarchy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HierarchyIsA::CTruck">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAIAAAAACAACAAAAAAAAA=</HashCode>
+      <FileName>CarIiA_Hierarchy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

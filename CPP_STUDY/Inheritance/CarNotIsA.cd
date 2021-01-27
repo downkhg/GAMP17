@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NotIsA::CBike">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAEEEgAAAAAAAAAAACAAAAAAQEA=</HashCode>
+      <FileName>CarNotIsA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NotIsA::CAutoBike">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAEAAEEEiAAAAAAAAAAAAAAAAAAQEA=</HashCode>
+      <FileName>CarNotIsA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NotIsA::CBus">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAEAAEEEgAAAAAAAgAAAAAAAAAAQEA=</HashCode>
+      <FileName>CarNotIsA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NotIsA::CTruck">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAEAAEEEgAAIAAAAACAACAAAAAAQEA=</HashCode>
+      <FileName>CarNotIsA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

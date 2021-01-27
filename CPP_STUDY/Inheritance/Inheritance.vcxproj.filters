@@ -21,10 +21,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarNotIsA.h">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioIsA.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CarIsA.h">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CarIiA_Hierarchy.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioHasA.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CarNotIsA.cd">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="CarIsA.cd">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="CarIsA_Hierarchy.cd">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

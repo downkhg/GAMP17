@@ -112,9 +112,11 @@ namespace IsA
 	void CarIsATestMain()
 	{
 		CVehicle cVehicle(0);
-		CBike cBike(1);
+		//CBike cBike(1);
+		CVehicle cBike(1);
 		CAutoBike cAutoBike(2, 900);
-		CBus cBus(20, 5000);
+		//CBus cBus(20, 5000);
+		CAutoBike cBus(20, 5000);
 		CTruck cTruck(2, 5000, 1000);
 	}
 }
