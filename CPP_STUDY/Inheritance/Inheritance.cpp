@@ -19,6 +19,10 @@ void main()
 	//IsA::CarIsATestMain();
 	//HierarchyIsA::CarIsATestMain();
 
+	///모두다 장단점이 있음. 
+	///다음과 같이 원하는 상황에 맞춰서 적절한 설계방법을 선택하면된다.
 	//IsA::RadioTestMain();
-	RadioHasA::RadioTestMain();
+	//RadioHasA::RadioTestMain();
+	//RadioHasA::RadioRefTestMain();
+	RadioHasA::RadioPtrTestMain();
 }

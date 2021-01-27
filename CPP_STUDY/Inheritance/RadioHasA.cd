@@ -14,7 +14,7 @@
       <FileName>RadioHasA.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RadioHasA::CRadio">
+  <Class Name="RadioHasA::CRadioRef">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEACAAAQAAAAAAAAAAAAAEAAACAAA=</HashCode>
