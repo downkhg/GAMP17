@@ -55,5 +55,8 @@
     <None Include="RadioHasA.cd">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="CarIsDiamondInheritance.cd">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

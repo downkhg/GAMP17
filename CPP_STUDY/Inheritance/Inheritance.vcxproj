@@ -136,6 +136,7 @@
   <ItemGroup>
     <None Include="CarIsA.cd" />
     <None Include="CarIsA_Hierarchy.cd" />
+    <None Include="CarIsDiamondInheritance.cd" />
     <None Include="CarNotIsA.cd" />
     <None Include="RadioHasA.cd" />
     <None Include="RadioIsA.cd" />

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DiamonInheritance::CVehicle">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAACAAEEEgAAAAAAAAAAAAAAAAAAQEA=</HashCode>
+      <FileName>CarIsA_DiamonInheritance.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiamonInheritance::CBike">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>CarIsA_DiamonInheritance.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiamonInheritance::CEnginer">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>CarIsA_DiamonInheritance.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiamonInheritance::CAutoBike">
+    <Position X="11.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CarIsA_DiamonInheritance.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiamonInheritance::CTruck" Collapsed="true">
+    <Position X="14.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAIAAAAACAACAAAAAAAAA=</HashCode>
+      <FileName>CarIsA_DiamonInheritance.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
