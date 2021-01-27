@@ -35,6 +35,9 @@
     <ClInclude Include="RadioHasA.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CarIsA_DiamonInheritance.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="CarNotIsA.cd">

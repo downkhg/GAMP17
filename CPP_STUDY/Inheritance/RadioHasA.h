@@ -179,6 +179,9 @@ namespace RadioHasA
 		//부품들이 객체 내부에 있으므로 메모리 누수가 발생함.
 		//cRidioEmpty.SetSpeaker(new CSpeaker());
 		//cRidioEmpty.SetAntena(new CAntena());
+		//다음과 같이 생성자나 소멸자에 의존하지않고,
+		//필요한 기능을 호출하도록 만들수도있다.
+		//cRidioEmpty.Release(); //내부에 동적할당된 객체를 소멸시킨다.
 		cRidioEmpty.GetSpeaker()->Switch(true);
 		cRidioEmpty.GetSpeaker()->VolumeUp();
 		cRidioEmpty.GetAntena()->SetHertz(3.14f);
