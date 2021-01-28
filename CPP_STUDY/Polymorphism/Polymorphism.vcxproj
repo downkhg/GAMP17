@@ -126,6 +126,7 @@
     <ClCompile Include="Polymorphism.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FunctionPtr.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeVirtual.h" />
   </ItemGroup>

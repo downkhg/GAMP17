@@ -51,7 +51,8 @@ namespace Virtual
 		{
 			cout << "~CRect:" << this << endl;
 		}
-		void Draw()
+		//오버라이딩: 부모가 있는 함수와 같은이름의 가상함수를 재정의하는 것
+		void Draw() override
 		{
 			cout << "CRect::Draw()" << endl;
 			sTopLeft.Draw("TL");
@@ -74,7 +75,7 @@ namespace Virtual
 		{
 			cout << "~CCircle:" << this << endl;
 		}
-		void Draw()
+		void Draw() override
 		{
 			cout << "CCircle::Draw:" << this << endl;
 			sPos.Draw("Pos");
@@ -96,7 +97,7 @@ namespace Virtual
 		{
 			cout << "~CTriangle:" << this << endl;
 		}
-		void Draw()
+		void Draw() override
 		{
 			cout << "CTriangle::Draw:" << this << endl;
 			sA.Draw("A");
@@ -111,13 +112,15 @@ namespace Virtual
 		CRect cRect;
 		CCircle cCircle;
 		CTriangle cTriangle;
-
+		//정적바인딩: 메모리가 할당될때 함수의 기능이 결정됨.
 		cShape.Draw();
 		cRect.Draw();
 		cCircle.Draw();
 		cTriangle.Draw();
 	}
-
+	//정적: 컴파일러에의해서결정됨 바인딩: 함수의 기능이 결정되는것
+	//동적: 프로그램 실행중  
+	//부모포인터에서 자식의 객체의 함수에 접근가능하다.
 	void ShapeManagerMain()
 	{
 		list<CShape*> listShapes;
@@ -129,6 +132,7 @@ namespace Virtual
 		list<CShape*>::iterator it = listShapes.begin();
 		for (; it != listShapes.end(); it++)
 		{
+			//동적바인딩: 할당된 메모리에 따라서 함수의 기능을 달라지는것.
 			(*it)->Draw();
 		}
 		cout << "###### All DrawShapes end ##########" << endl;
