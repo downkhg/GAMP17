@@ -31,20 +31,39 @@ void SmartPointerTestMain()
 	cout << "SharedPtrCount:" << sharedPtr.use_count() << endl;
 }
 
-void FunctorTestMain()
+void DisplayInt(int data)
 {
-
+	cout << "FuncPtr:"<<data << endl;
 }
 
-void RamdaTestMain()
+class DisplayIntFunc
 {
+public:
+	void operator()(int data)
+	{
+		cout << "FuncObject:"<< data << endl;
+	}
+};
 
+void FunctorLambdaTestMain()
+{
+	int nSize = 10;
+	vector<int> vecDatas(nSize);
+	for (int i = 0; i < nSize; i++)
+		vecDatas[i] = i * 10;
+
+	for_each(vecDatas.begin(), vecDatas.end(), DisplayInt);//함수포인터: 
+	for_each(vecDatas.begin(), vecDatas.end(), [](int data) { cout << "Lamda:"<< data << endl; });//람다식: 무명함수. 이름이 없는 함수를 바로 정의해서 사용함.
+	DisplayIntFunc cFunc;
+	for_each(vecDatas.begin(), vecDatas.end(), cFunc); //함수객체:컴파일러가 인라인으로 처리한다고함.
 }
+
 
 void main()
 {
 	//_CrtSetBreakAlloc(156); //메모리 누수시 번호를 넣으면 할당하는 위치에 브레이크 포인트를 건다.
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //메모리 누수 검사 
-	SmartPointerTestMain();
+	//SmartPointerTestMain();
 	//WeakPtrRunTest();//weak_ptr:공유포인터의 카운트를 증가시키지않고, 참조를 하는데 사용된다.
+	FunctorLambdaTestMain();
 }
