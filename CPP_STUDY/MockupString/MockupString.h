@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <stdlib.h> //메모리 동적할당 헤더
