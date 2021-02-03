@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/GameProgramming/RoomExitUnity/Library/PackageCache/com.unity.textmeshpro@2.0.1/Package Resources/TMP Essential Resources.unitypackage
+/GameProgramming/RoomExitUnity/Library/PackageCache/com.unity.textmeshpro@2.0.1/Package Resources/TMP Examples & Extras.unitypackage
+/GameProgramming/RoomExitUnity/RoomExitUnity.sln
+/GameProgramming/RoomExitUnity/Assembly-CSharp.csproj
+/GameProgramming/RoomExitUnity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll.mdb
