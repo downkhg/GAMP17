@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SingleObject">
+    <Position X="1.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAkAAAAAABAAAAAAAAAABAAAAAAAAAAAABAAAAQ=</HashCode>
+      <FileName>Singleton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Unit">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marin">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commader">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Commader::E_COMMAND">
+        <TypeIdentifier>
+          <NewMemberFileName>Observer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAABAAAAAAgABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

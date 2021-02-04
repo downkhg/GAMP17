@@ -23,5 +23,16 @@
     <ClInclude Include="Singleton.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Deco.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd">
+      <Filter>소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

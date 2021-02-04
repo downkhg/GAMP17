@@ -126,7 +126,12 @@
     <ClCompile Include="DesignPettern.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Deco.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Singleton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
