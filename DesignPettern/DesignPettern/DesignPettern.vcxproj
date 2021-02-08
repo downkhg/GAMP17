@@ -124,6 +124,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DesignPettern.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="State.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deco.h" />
