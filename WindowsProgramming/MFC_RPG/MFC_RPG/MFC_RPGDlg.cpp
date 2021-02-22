@@ -12,6 +12,27 @@
 #define new DEBUG_NEW
 #endif
 
+void SpinChangState(LPNMUPDOWN pNMUpDown, CEdit& editState, CStatic& staticBonus, int& state, int& bonus)
+{
+	CString cstrState;
+	if (pNMUpDown->iDelta < 0)
+	{
+		state--;
+		bonus++;
+		cstrState.Format(_T("%d"), state);
+		editState.SetWindowTextW(cstrState);
+	}
+	else
+	{
+		state++;
+		bonus--;
+		cstrState.Format(_T("%d"), state);
+		editState.SetWindowTextW(cstrState);
+	}
+	CString cstrBonus;
+	cstrBonus.Format(_T("보너스포인트: %d"), bonus);
+	staticBonus.SetWindowTextW(cstrBonus);
+}
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -48,8 +69,6 @@ END_MESSAGE_MAP()
 
 // CMFCRPGDlg 대화 상자
 
-
-
 CMFCRPGDlg::CMFCRPGDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFC_RPG_DIALOG, pParent)
 {
@@ -59,12 +78,23 @@ CMFCRPGDlg::CMFCRPGDlg(CWnd* pParent /*=nullptr*/)
 void CMFCRPGDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_EDIT_NAME, m_editName);
+	DDX_Control(pDX, IDC_COMBO_CLASS, m_comboClass);
+	DDX_Control(pDX, IDC_EDIT_HP, m_editHP);
+	DDX_Control(pDX, IDC_EDIT_HP2, m_editMP);
+	DDX_Control(pDX, IDC_EDIT_STR, m_editStr);
+	DDX_Control(pDX, IDC_EDIT_STR2, m_editInt);
+	DDX_Control(pDX, IDC_EDIT_DEF, m_editDEF);
+	DDX_Control(pDX, IDC_STATIC_BONUS, m_staticBonus);
 }
 
 BEGIN_MESSAGE_MAP(CMFCRPGDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_CBN_SELCHANGE(IDC_COMBO_CLASS, &CMFCRPGDlg::OnCbnSelchangeComboClass)
+	ON_NOTIFY(UDN_DELTAPOS, IDC_SPIN_HP, &CMFCRPGDlg::OnDeltaposSpinHp)
+	ON_NOTIFY(UDN_DELTAPOS, IDC_SPIN_HP2, &CMFCRPGDlg::OnDeltaposSpinHp2)
 END_MESSAGE_MAP()
 
 
@@ -100,6 +130,11 @@ BOOL CMFCRPGDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	m_comboClass.AddString(_T("전사"));
+	m_comboClass.AddString(_T("궁수"));
+	m_comboClass.AddString(_T("마법사"));
+
+	m_editName.GetWindowTextW(m_cstrName);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -153,3 +188,65 @@ HCURSOR CMFCRPGDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+//void CAboutDlg::OnDeltaposSpinHp(NMHDR *pNMHDR, LRESULT *pResult)
+//{
+//	LPNMUPDOWN pNMUpDown = reinterpret_cast<LPNMUPDOWN>(pNMHDR);
+//	int state = 0;
+//	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+//	if (pNMUpDown->iDelta < 0)
+//	{
+//		state++;
+//		SetDlgItemInt(IDC_EDIT_HP, state);
+//	}
+//	else
+//	{
+//		state--;
+//		SetDlgItemInt(IDC_EDIT_HP, state);
+//	}
+//
+//	*pResult = 0;
+//}
+
+
+void CMFCRPGDlg::OnCbnSelchangeComboClass()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	
+}
+
+
+
+
+void CMFCRPGDlg::OnDeltaposSpinHp(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMUPDOWN pNMUpDown = reinterpret_cast<LPNMUPDOWN>(pNMHDR);
+	SpinChangState(pNMUpDown, m_editHP, m_staticBonus, m_nHP, m_nBonus);
+	
+	*pResult = 0;
+}
+
+
+void CMFCRPGDlg::OnDeltaposSpinHp2(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMUPDOWN pNMUpDown = reinterpret_cast<LPNMUPDOWN>(pNMHDR);
+	
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	if (pNMUpDown->iDelta < 0)
+	{
+		m_nBonus--;
+		m_nMP++;
+		SetDlgItemInt(IDC_EDIT_MP, m_nMP);
+	}
+	else
+	{
+		m_nBonus++;
+		m_nMP--;
+		SetDlgItemInt(IDC_EDIT_MP, m_nMP);
+	}
+	CString cstrBonus;
+	cstrBonus.Format(_T("보너스포인트: %d"), m_nBonus);
+	m_staticBonus.SetWindowTextW(cstrBonus);
+	*pResult = 0;
+}

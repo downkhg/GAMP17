@@ -31,4 +31,26 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CEdit m_editName;
+	CComboBox m_comboClass;
+	CEdit m_editHP;
+	CEdit m_editMP;
+	CEdit m_editStr;
+	CEdit m_editInt;
+	CEdit m_editDEF;
+	CStatic m_staticBonus;
+
+	CString m_cstrName;
+
+	int m_nBonus = 0;
+	int m_nHP = 0;
+	int m_nMP = 0;
+	int m_nStr = 0;
+	int m_nInt = 0;
+	int m_nDef = 0;
+
+	afx_msg void OnCbnSelchangeComboClass();
+	afx_msg void OnDeltaposSpinHp(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnDeltaposSpinHp2(NMHDR *pNMHDR, LRESULT *pResult);
 };
