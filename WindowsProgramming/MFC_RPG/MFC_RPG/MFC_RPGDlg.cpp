@@ -66,7 +66,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-
 // CMFCRPGDlg 대화 상자
 
 CMFCRPGDlg::CMFCRPGDlg(CWnd* pParent /*=nullptr*/)
