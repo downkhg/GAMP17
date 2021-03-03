@@ -56,6 +56,54 @@ struct Status {
 	}
 };
 
+class Effect
+{
+	virtual void Use(Player& caster, Player& target) = 0;
+};
+
+class Hill : public Effect
+{
+	void Use(Player& caster, Player& target)
+	{
+		 target.GetStatus().nHp += caster.GetStatus().nInt;
+	}
+};
+
+class Attack : public Effect
+{
+	void Use(Player& caster, Player& target)
+	{
+		target.GetStatus().nHp -= caster.GetStatus().nStr;
+	}
+};
+
+class Skill
+{
+	vector<Effect*> listEffect;
+	void AddEffect(Effect* effect)
+	{
+		listEffect.push_back(effect);
+	}
+	virtual void Ative(Player& caster, Player& Target) = 0;
+};
+
+class HoliAttack : public Skill
+{
+	void Ative(Player& caster, Player& target)
+	{
+		for(int i = 0; listEffect.size(); i++)
+			listEffect[i]->Use(caster, target);
+	}
+};
+
+class EffectHill : public Skill
+{
+	void Ative(Player& caster, Player& Target)
+	{
+
+	}
+};
+
 class Item {
 public:
 	enum E_ITEM_KIND { WEAPON, ARMOR, ACC, POTION, THROW };
@@ -84,7 +132,7 @@ public:
 	enum E_ITEM_LIST { WOOD_SOWRD, BONE_SOWRD, WOOD_ARMOR, BONE_AMROR, WOOD_RING, BONE_RING, HP_POTION, MP_POTION, STONE, BOOM };
 	ItemManager()
 	{
-		m_listItems.resize(10);
+		/*m_listItems.resize(10);
 		m_listItems[0] = Item(Item::E_ITEM_KIND::WEAPON, "목검", "데미지증가", Status(0, 0, 10, 0, 0), 100);
 		m_listItems[1] = Item(Item::E_ITEM_KIND::WEAPON, "본소드", "데미지증가", Status(0, 0, 20, 0, 0), 100);
 		m_listItems[2] = Item(Item::E_ITEM_KIND::ARMOR, "나무갑옷", "방어력증가", Status(0, 0, 0, 10, 0), 100);
@@ -94,9 +142,9 @@ public:
 		m_listItems[6] = Item(Item::E_ITEM_KIND::POTION, "힐링포션", "HP회복", Status(100, 0, 0, 0, 0), 100);
 		m_listItems[7] = Item(Item::E_ITEM_KIND::POTION, "마나포션", "MP회복", Status(0,100, 0, 0, 0), 100);
 		m_listItems[8] = Item(Item::E_ITEM_KIND::THROW, "짱돌", "단일적대미지", Status(0, 0, 50, 0, 0), 100);
-		m_listItems[9] = Item(Item::E_ITEM_KIND::THROW, "목검", "다수적대미지", Status(0, 0, 50, 0, 0), 100);
-		SaveFile();
-		//LoadFile();
+		m_listItems[9] = Item(Item::E_ITEM_KIND::THROW, "목검", "다수적대미지", Status(0, 0, 50, 0, 0), 100);*/
+		//SaveFile();
+		LoadFile();
 	}
 
 	void SaveFile()
@@ -154,7 +202,7 @@ public:
 			fclose(pFile);
 		}
 		else
-			cout << " Load Failed!" << endl;
+			cout << " Save Failed!" << endl;
 	}
 	Item* GetItem(int idx)
 	{
@@ -171,6 +219,7 @@ class Player {
 
 	vector<Item*> m_listIventory;
 	vector<Item*> m_listEqument;
+	vector<Skill*> m_listSkills;
 public:
 	Player()
 	{
@@ -465,6 +514,11 @@ public:
 	int GetStage()
 	{
 		return m_eStage;
+	}
+
+	Status GetStatus()
+	{
+		return m_sStatus;
 	}
 private:
 	int m_eStage = E_STAGE::CRATE;
