@@ -86,8 +86,8 @@ HRESULT InitVB()
 	CUSTOMVERTEX vertices[] =
 	{
 		{ 50.0f,  50.0f, 0.5f, 0.1f, 0xffff0000, }, // x, y, z, rhw, color
-		{ 250.0f, 250.0f, 0.5f, 1.0f, 0xff00ff00, },
 		{ 50.0f, 250.0f, 0.5f, 1.0f, 0xff00ffff, },
+		{ 250.0f, 250.0f, 0.5f, 1.0f, 0xff00ff00, },
 	};
 
 	/// 정점버퍼 생성
