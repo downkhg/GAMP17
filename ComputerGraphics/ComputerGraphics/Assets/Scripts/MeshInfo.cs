@@ -49,15 +49,16 @@ public class MeshInfo : MonoBehaviour {
             int a = indices[m_nIndicesNumber + 0];
             int b = indices[m_nIndicesNumber + 1];
             int c = indices[m_nIndicesNumber + 2];
-
+            //로컬좌표계
             Vector3 vA = m_mesh.vertices[a];
             Vector3 vB = m_mesh.vertices[b];
             Vector3 vC = m_mesh.vertices[c];
-
+            //월드좌표계
+            //회전
             vA = quaternion * vA;
             vB = quaternion * vB;
             vC = quaternion * vC;
-
+            //이동
             vA += pos;
             vB += pos;
             vC += pos;
