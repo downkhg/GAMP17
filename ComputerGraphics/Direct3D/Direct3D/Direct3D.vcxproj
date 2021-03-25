@@ -18,6 +18,32 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExplosionEffect.png" />
+    <Image Include="tex.jpg" />
+    <Image Include="tree01S.dds" />
+    <Image Include="tree02S.dds" />
+    <Image Include="tree1.bmp" />
+    <Image Include="tree35S.dds" />
+    <Image Include="water1.bmp" />
+    <Image Include="water2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="UVAnimationMaker.cpp" />
+    <ClCompile Include="ZCamera.cpp" />
+    <ClCompile Include="ZFLog.cpp" />
+    <ClCompile Include="ZWater.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="texCoords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="define.h" />
+    <ClInclude Include="ZCamera.h" />
+    <ClInclude Include="ZFLog.h" />
+    <ClInclude Include="ZWater.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{92FD99E7-F1BD-4D3E-AE28-D08D13F09B43}</ProjectGuid>
@@ -77,7 +103,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -126,15 +152,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="02.6.Meshes.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="tiger.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="tiger.x" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

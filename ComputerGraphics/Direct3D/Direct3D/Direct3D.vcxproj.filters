@@ -15,18 +15,65 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="02.6.Meshes.cpp">
+    <Image Include="tex.jpg">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="tree01S.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="tree1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="tree02S.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="tree35S.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="ExplosionEffect.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="water1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="water2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UVAnimationMaker.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ZCamera.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ZFLog.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ZWater.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="tiger.x">
-      <Filter>리소스 파일</Filter>
-    </None>
+    <ClInclude Include="ZCamera.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ZFLog.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ZWater.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="tiger.bmp">
+    <Text Include="texCoords.txt">
       <Filter>리소스 파일</Filter>
-    </Image>
+    </Text>
   </ItemGroup>
 </Project>
