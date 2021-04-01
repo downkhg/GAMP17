@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dynamic">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASEAAgAQiACAMAgIAACEAwAAIIgAIAIAACkAACACEA=</HashCode>
+      <FileName>Assets\Scprits\Dynamic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AIController">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="AIController.E_AI_STATE">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scprits\AIController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQABAAAACAAAAAABAAAAAAAAAAABAAAAAgABIAgAAA=</HashCode>
+      <FileName>Assets\Scprits\AIController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Timmer">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAEAAAAAAAEAAEAAgAAAAAAAAAAIIA=</HashCode>
+      <FileName>Assets\Scprits\AIController.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
