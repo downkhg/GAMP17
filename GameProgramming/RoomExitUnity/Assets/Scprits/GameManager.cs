@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GUIManager m_cGuiManager;
     public BoxCollider m_colliderBox;
     public ItemManager m_cItemManager;
+    public Camera m_cCamera;
 
     public Dictionary<string,RoomObject> m_listRoomObject;
 
@@ -39,11 +40,11 @@ public class GameManager : MonoBehaviour
     {
         m_cInstance = this;
 
-        m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY);
-        m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY01);
-        m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY02);
-        m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY03);
-        m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY04);
+        //m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY);
+        //m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY01);
+        //m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY02);
+        //m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY03);
+        //m_cPlayer.SetInventory(ItemManager.E_ITEM.KEY04);
         Debug.Log("GameManager::Awake()");
     }
 
