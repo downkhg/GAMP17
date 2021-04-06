@@ -13,6 +13,11 @@ public class PlayerController : Controller
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (Input.GetKey(KeyCode.UpArrow))
         {
             Translate(Vector3.forward.normalized, Dynamic.Speed);
@@ -27,7 +32,7 @@ public class PlayerController : Controller
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-           Rotation(Vector3.down, Dynamic.AngleSpeed);
+            Rotation(Vector3.down, Dynamic.AngleSpeed);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -36,6 +41,29 @@ public class PlayerController : Controller
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump(Rigidbody, Dynamic.JumpPower);
+        }
+
+        if(Input.GetMouseButton(0))
+        {
+            Ray rayCam = GameManager.GetInstance().m_cCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit raycastHit;
+            if(Physics.Raycast(rayCam,  out raycastHit, this.Dynamic.AttakRange))
+            {
+
+                GameObject objCollison = raycastHit.collider.gameObject;
+                Debug.Log("CollisonEnter:" + objCollison.name);
+                if (objCollison)
+                {
+                    if (objCollison.tag == "CollisionEvent")
+                    {
+                        RoomObject roomObject = objCollison.GetComponent<RoomObject>();
+                        if (roomObject)
+                            roomObject.CheckItem(this.Dynamic);
+                    }
+                    Debug.DrawLine(this.transform.position, this.transform.position + rayCam.direction * Dynamic.AttakRange);
+                    Debug.Log("DebugRay");
+                }
+            }
         }
     }
 }

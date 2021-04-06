@@ -1,38 +1,134 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Dynamic">
-    <Position X="1.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AASEAAgAQiACAMAgIAACEAwAAIIgAIAIAACkAACACEA=</HashCode>
-      <FileName>Assets\Scprits\Dynamic.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PlayerController">
-    <Position X="3.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scprits\PlayerController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="AIController">
-    <Position X="3.5" Y="3.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+    <Position X="5.5" Y="9.5" Width="1.5" />
     <NestedTypes>
-      <Enum Name="AIController.E_AI_STATE">
+      <Enum Name="AIController.E_AI_STATE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scprits\AIController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="AIController.E_ACTION_RESURT" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Assets\Scprits\AIController.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAQABAAAACAAAAAABAAAAAAAAAAABAAAAAgABIAgAAA=</HashCode>
+      <HashCode>ACQEBAoAACBAAAAgBxAAAAACAAAABAAAAAgABBAgAEQ=</HashCode>
       <FileName>Assets\Scprits\AIController.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Bullet" Collapsed="true">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAIABAAAAAAoAAAAAAAAAAAAEAIAACEA=</HashCode>
+      <FileName>Assets\Scprits\Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Door" Collapsed="true">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAIAAAAAAAAAAAAAAAIAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoorAsix" Collapsed="true">
+    <Position X="11.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABACAAIAIAQAAAAAAAAAAAAAAAIAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scprits\DoorAsix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoorObject">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scprits\DoorObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dynamic" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASEAAAAQiBCAEgAIAACEAwBAIIgAIAIAACgCACACEA=</HashCode>
+      <FileName>Assets\Scprits\Dynamic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExitDoor">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scprits\ExitDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAQgiABAAAAAAgAAAQABAAAAAAAEAEAEAAAAkQ=</HashCode>
+      <FileName>Assets\Scprits\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gun">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\Gun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\ItemManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemManager">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ItemManager.E_ITEM">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scprits\ItemManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAABAUAAAAAAAAAAAAAAAAAAAAAAABAAAEA=</HashCode>
+      <FileName>Assets\Scprits\ItemManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="7.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomObject">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\RoomObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToolKit">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scprits\ToolKit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Struct Name="Timmer">
-    <Position X="5.5" Y="3.75" Width="1.5" />
+    <Position X="13" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAEAAAAAAAEAAEAAgAAAAAAAAAAIIA=</HashCode>
       <FileName>Assets\Scprits\AIController.cs</FileName>
