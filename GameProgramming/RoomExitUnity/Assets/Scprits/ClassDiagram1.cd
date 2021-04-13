@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="AIController">
-    <Position X="5.5" Y="9.5" Width="1.5" />
+    <Position X="4.25" Y="5.75" Width="1.5" />
     <NestedTypes>
       <Enum Name="AIController.E_AI_STATE" Collapsed="true">
         <TypeIdentifier>
@@ -19,15 +19,15 @@
       <FileName>Assets\Scprits\AIController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Bullet" Collapsed="true">
-    <Position X="8.25" Y="2.25" Width="1.5" />
+  <Class Name="Bullet">
+    <Position X="6.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scprits\Bullet.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Controller">
-    <Position X="6.75" Y="5.25" Width="1.5" />
+    <Position X="5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAgAAAIABAAAAAAoAAAAAAAAAAAAEAIAACEA=</HashCode>
       <FileName>Assets\Scprits\Controller.cs</FileName>
@@ -54,15 +54,15 @@
       <FileName>Assets\Scprits\DoorObject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dynamic" Collapsed="true">
-    <Position X="8.25" Y="3.25" Width="1.5" />
+  <Class Name="Dynamic">
+    <Position X="8.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AASEAAAAQiBCAEgAIAACEAwBAIIgAIAIAACgCACACEA=</HashCode>
       <FileName>Assets\Scprits\Dynamic.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ExitDoor">
-    <Position X="0.5" Y="7.5" Width="1.5" />
+    <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAIA=</HashCode>
       <FileName>Assets\Scprits\ExitDoor.cs</FileName>
@@ -71,7 +71,7 @@
   <Class Name="GameManager" Collapsed="true">
     <Position X="10" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQEAAAQgiABAAAAAAgAAAQABAAAAAAAEAEAEAAAAkQ=</HashCode>
+      <HashCode>AAQEACAQgiABAAAAAAgAAAQABAAAAAAAEAEAEAAAAkQ=</HashCode>
       <FileName>Assets\Scprits\GameManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -82,8 +82,8 @@
       <FileName>Assets\Scprits\Gun.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Item" Collapsed="true">
-    <Position X="8.25" Y="4.25" Width="1.5" />
+  <Class Name="Item">
+    <Position X="6.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scprits\ItemManager.cs</FileName>
@@ -107,7 +107,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PlayerController">
-    <Position X="7.75" Y="9.5" Width="1.5" />
+    <Position X="6" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scprits\PlayerController.cs</FileName>

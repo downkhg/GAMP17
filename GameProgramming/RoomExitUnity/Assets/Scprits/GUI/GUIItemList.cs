@@ -51,8 +51,10 @@ public class GUIItemList : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
+        Debug.Log("GUIItemList.Awake():" + this.gameObject.name);
         m_gridLayoutGroupContent = m_recttrContent.gameObject.GetComponent<GridLayoutGroup>();
     }
 }
