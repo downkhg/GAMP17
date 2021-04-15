@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Dynamic m_cPlayer;
+    public Player m_cPlayer;
     public GUIManager m_cGuiManager;
     public BoxCollider m_colliderBox;
     public ItemManager m_cItemManager;
-    public Camera m_cCamera;
 
     public Dictionary<string,RoomObject> m_listRoomObject;
 

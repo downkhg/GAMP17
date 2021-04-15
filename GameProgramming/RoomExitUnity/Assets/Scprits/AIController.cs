@@ -57,6 +57,7 @@ public class AIController : Controller
     Timmer m_sAttackTimmer;
 
     public float m_fSite;
+    public float m_fAttackAngle;
 
     public float m_fRotAngle;
     public float m_fCurRotAngle;
@@ -66,20 +67,19 @@ public class AIController : Controller
 
     public void SetState(E_AI_STATE state)
     {
-        if (m_eCurState == state) return;
-        Debug.Log("### SetState("+state+") 1 ####");
         switch (state)
         {
             case E_AI_STATE.ATTAK:
+                m_navMashAgent.SetDestination(this.transform.position);
                 m_sAttackTimmer = new Timmer(1);
-                Dynamic.Attack();
+                Player.Attack();
                 m_sAttackTimmer.StartTimmer();
                 break;
             case E_AI_STATE.MOVE:
                 //만약, 회전시 생길수있는 오차를 보정하기위해서 사용함.
                 if (CheckTarget())
                 {
-                    Vector3 vTargetPos = Dynamic.m_colliderTarget.transform.position;
+                    Vector3 vTargetPos = Player.m_colliderTarget.transform.position;
                     vTargetPos.y = transform.position.y;
                     transform.LookAt(vTargetPos);
                 }
@@ -92,7 +92,7 @@ public class AIController : Controller
                 {
                     Vector3 vDir = transform.forward;
                     Vector3 vPos = transform.position;
-                    Vector3 vTargetPos = Dynamic.m_colliderTarget.gameObject.transform.position;
+                    Vector3 vTargetPos = Player.m_colliderTarget.gameObject.transform.position;
                     vTargetPos.y = transform.position.y;
                     Vector3 vToTarget = vTargetPos - vPos;
 
@@ -113,7 +113,6 @@ public class AIController : Controller
                 break;
         }
         m_eCurState = state;
-        Debug.Log("### SetState(" + state + ") 2 ####");
     }
 
     public void UpdateState()
@@ -125,11 +124,15 @@ public class AIController : Controller
         {
             case E_AI_STATE.ATTAK:
                 {
-                    if (CheckRaycastForword("Player", Dynamic.AttakRange))
+                    //if (CheckRaycastForword("Player", Player.AttakRange))
+                    if(CheckArcForword(Player.m_colliderTarget))
                     {
                         m_sAttackTimmer.UpdateTimmer();
                         if (m_sAttackTimmer.CheckTimmer())
-                            Dynamic.Attack();
+                        {
+                            if (!Player.Attack())
+                                Player.m_cGun.Reload();
+                        }
                     }
                     else
                         SetState(E_AI_STATE.LOOKAT);
@@ -140,16 +143,15 @@ public class AIController : Controller
                     if (CheckRaycastForword("Player",m_fSite))
                     {
                         Vector3 vPos = transform.position;
-                        Vector3 vTargetPos = Dynamic.m_colliderTarget.transform.position;
+                        Vector3 vTargetPos = Player.m_colliderTarget.transform.position;
 
                         float fDist = Vector3.Distance(vPos, vTargetPos);
-                        if (fDist > Dynamic.AttakRange)
+                        if (fDist > Player.AttakRange)
                         {
-                            //네비메시를 이용한 이동
-                            //m_navMashAgent.SetDestination(vTargetPos);
-                            //Rigidbody.velocity = Vector3.zero; //물리현상 초기화
-                            Translate(Vector3.forward,Dynamic.Speed); //장애물고려없이 이동
+                            m_navMashAgent.SetDestination(vTargetPos);
+                            Rigidbody.velocity = Vector3.zero;
                         }
+                        //Translate(Vector3.forward,Dynamic.Speed);
                         else
                             SetState(E_AI_STATE.ATTAK);
                     }
@@ -160,7 +162,7 @@ public class AIController : Controller
             case E_AI_STATE.SEARCH:
                 if (CheckTarget())
                 {
-                    if(!CheckRaycastBetween("Wall",transform.position, Dynamic.m_colliderTarget.transform.position ))
+                    if(!CheckRaycastBetween("Wall",transform.position, Player.m_colliderTarget.transform.position ))
                     //if(ActionCheckWall() != E_ACTION_RESURT.SUCCESS)
                         SetState(E_AI_STATE.LOOKAT);
                 }
@@ -168,8 +170,8 @@ public class AIController : Controller
             case E_AI_STATE.LOOKAT:
                 if (m_fCurRotAngle <= m_fRotAngle)
                 {
-                    Rotation(m_vRotAsix, Dynamic.AngleSpeed);
-                    m_fCurRotAngle += Dynamic.AngleSpeed;
+                    Rotation(m_vRotAsix, Player.AngleSpeed);
+                    m_fCurRotAngle += Player.AngleSpeed;
                 }
                 else
                 {
@@ -190,18 +192,18 @@ public class AIController : Controller
     {
         Collider collider = ProcessFindNearCollider("Player");
        
-        Dynamic.m_colliderTarget = collider;
+        Player.m_colliderTarget = collider;
         return E_ACTION_RESURT.RUNNING;
     }
     public E_ACTION_RESURT ActionCheckWall()
     {
 
         Vector3 vPos = transform.position;
-        Vector3 vTarget = Dynamic.m_colliderTarget.transform.position;
+        Vector3 vTarget = Player.m_colliderTarget.transform.position;
 
         if (CheckRaycastBetween("Wall", vPos, vTarget))
         {
-            Dynamic.m_colliderTarget = null;
+            Player.m_colliderTarget = null;
             return E_ACTION_RESURT.SUCCESS;
         }
 
@@ -212,8 +214,8 @@ public class AIController : Controller
     {
         if (m_fCurRotAngle <= m_fRotAngle)
         {
-            Rotation(m_vRotAsix, Dynamic.AngleSpeed);
-            m_fCurRotAngle += Dynamic.AngleSpeed;
+            Rotation(m_vRotAsix, Player.AngleSpeed);
+            m_fCurRotAngle += Player.AngleSpeed;
             return E_ACTION_RESURT.RUNNING;
         }
         else
@@ -230,13 +232,40 @@ public class AIController : Controller
 
     public bool CheckTarget()
     {
-        return Dynamic.m_colliderTarget ? true : false;
+        return Player.m_colliderTarget ? true : false;
+    }
+
+    public bool CheckArcForword(Collider collider)
+    {
+        Vector3 vPos = transform.position;
+        Vector3 vColPos = collider.transform.position;
+        Vector3 vForword = transform.forward;
+
+        Vector3 vDist = vColPos - vPos;
+        float fDist = vDist.magnitude;
+
+        if (fDist <= m_fSite)
+        {
+            float fColAngle = Vector3.Angle(vForword, vDist.normalized);
+            float fHalfAngle = m_fAttackAngle * 0.5f;
+            Debug.DrawLine(vPos, vPos + vForword * m_fSite, Color.blue);
+            Vector3 vRight = Quaternion.Euler(Vector3.up * fHalfAngle) * vForword;
+            Debug.DrawLine(vPos, vPos + vRight * m_fSite, Color.red);
+            Vector3 vLeft = Quaternion.Euler(Vector3.down * fHalfAngle) * vForword;
+            Debug.DrawLine(vPos, vPos + vLeft * m_fSite, Color.red);
+
+            if (fColAngle <= fHalfAngle)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool CheckRaycastForword(string strLayerName, float dist)
     {
         Vector3 vPos = transform.position;
-        vPos.y = Dynamic.transform.position.y;
+        vPos.y = Player.transform.position.y;
         Ray ray = new Ray(vPos, transform.forward);
         Debug.DrawLine(vPos, vPos + ray.direction * dist);
         return Physics.Raycast(ray, dist, 1 << LayerMask.NameToLayer(strLayerName));
@@ -244,7 +273,7 @@ public class AIController : Controller
 
     public bool CheckRaycastBetween(string strLayerName, Vector3 vPos, Vector3 vTarget)
     {
-        vPos.y = Dynamic.transform.position.y;
+        vPos.y = Player.transform.position.y;
         Vector3 vDist = vTarget - vPos;
         Ray ray = new Ray(vPos, vDist.normalized);
         Debug.DrawLine(vPos, vTarget);
@@ -254,10 +283,10 @@ public class AIController : Controller
     public bool CheckAttakRange()
     {
         Vector3 vPos = transform.position;
-        Vector3 vTargetPos = Dynamic.m_colliderTarget.transform.position;
+        Vector3 vTargetPos = Player.m_colliderTarget.transform.position;
 
         float fDist = Vector3.Distance(vPos, vTargetPos);
-        if (fDist > Dynamic.AttakRange) return false;
+        if (fDist > Player.AttakRange) return false;
         return true;
     }
 

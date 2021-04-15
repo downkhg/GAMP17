@@ -6,10 +6,10 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     [SerializeField]
-    Dynamic m_dynamicPlayer;
+    Player m_Player;
     Rigidbody m_rigidbody;
 
-    public Dynamic Dynamic { get { return m_dynamicPlayer; } }
+    public Player Player { get { return m_Player; } }
     protected Rigidbody Rigidbody { get { return m_rigidbody; } }
 
     // Start is called before the first frame update

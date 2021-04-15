@@ -6,7 +6,7 @@ public class DoorObject : RoomObject
 {
     [SerializeField]
     protected Door m_cDoor; 
-    public override bool CheckItem(Dynamic dynamic)
+    public override bool CheckItem(Player dynamic)
     {
         if(m_cDoor.m_cDoorAsix.m_bOpen)
             return base.CheckItem(dynamic);

@@ -100,7 +100,7 @@ public class GUIManager : MonoBehaviour
 
                 break;
             case E_SCENCE_STATUS.PLAY:
-                Dynamic player = m_cGameManager.m_cPlayer;
+                Player player = m_cGameManager.m_cPlayer;
                 SetTimmer(player.m_nTimmerCount, player.m_nMaxTimmer);
 
                 if (Input.GetKeyDown(KeyCode.I))

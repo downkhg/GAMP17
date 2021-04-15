@@ -6,7 +6,7 @@ public class RoomObject : MonoBehaviour
 {
     public ItemManager.E_ITEM m_eItem;
   
-    public virtual bool CheckItem(Dynamic dynamic)
+    public virtual bool CheckItem(Player dynamic)
     {
         Debug.Log("RoomObject::CheckItem 1 ");
         if (m_eItem != ItemManager.E_ITEM.NONE)

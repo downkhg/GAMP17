@@ -10,7 +10,7 @@ public class GUIItemList : MonoBehaviour
     public RectTransform m_recttrContent;
     public GridLayoutGroup m_gridLayoutGroupContent;
     
-    public void InitItemList(Dynamic dynamic, GUIItemInfo guiItemInfo)
+    public void InitItemList(Player dynamic, GUIItemInfo guiItemInfo)
     {
         List<ItemManager.E_ITEM> listIventory = dynamic.m_listInventory;
         foreach (ItemManager.E_ITEM item in listIventory)
@@ -51,10 +51,8 @@ public class GUIItemList : MonoBehaviour
     }
 
     // Start is called before the first frame update
-
-    private void Awake()
+    void Start()
     {
-        Debug.Log("GUIItemList.Awake():" + this.gameObject.name);
         m_gridLayoutGroupContent = m_recttrContent.gameObject.GetComponent<GridLayoutGroup>();
     }
 }
