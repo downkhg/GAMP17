@@ -2774,7 +2774,6 @@ MonoBehaviour:
   m_cGuiManager: {fileID: 1019470734}
   m_colliderBox: {fileID: 841772686}
   m_cItemManager: {fileID: 856957791}
-  m_cCamera: {fileID: 0}
 --- !u!4 &856957790
 Transform:
   m_ObjectHideFlags: 0
@@ -3541,7 +3540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ab9475140454b4eaff4538d8428fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dynamicPlayer: {fileID: 651374286}
+  m_Player: {fileID: 651374286}
 --- !u!1 &1163212804
 GameObject:
   m_ObjectHideFlags: 0
