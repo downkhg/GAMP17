@@ -33,10 +33,19 @@ public class Gun : MonoBehaviour
     }
 
     public void EnqueBullet(GameObject gameObject)
-    {
+    { 
         gameObject.SetActive(false);
         gameObject.transform.position = Vector3.zero;
         m_queBullet.Enqueue(this.gameObject);
+        Debug.Log(string.Format("EnqueBullet({0}):{1}", m_queBullet.Count, gameObject.name));
+    }
+
+    public GameObject DequeBullet()
+    {
+        GameObject objBullet = m_queBullet.Dequeue();
+        objBullet.SetActive(true);
+        Debug.Log(string.Format("DequeBullet({0}):{1}", m_queBullet.Count, objBullet.name));
+        return objBullet;
     }
 
     public void Reload()
@@ -60,14 +69,19 @@ public class Gun : MonoBehaviour
         {
             if (m_CurBulletCount > 0)
             {
-                GameObject objBullet = m_queBullet.Dequeue();
-                objBullet.SetActive(true);
-                objBullet.transform.position = m_transMozzle.position;
-                Bullet bullet = objBullet.GetComponent<Bullet>();
-                bullet.Initialize(this);
-                Rigidbody rigidbodyBullet = objBullet.GetComponent<Rigidbody>();
-                rigidbodyBullet.AddForce(transform.forward * 300);
-                m_CurBulletCount--;
+                GameObject objBullet = DequeBullet();
+                if (objBullet)
+                {
+                    objBullet.transform.position = m_transMozzle.position;
+                    Bullet bullet = objBullet.GetComponent<Bullet>();
+                    if (bullet)
+                    {
+                        bullet.Initialize(this);
+                        Rigidbody rigidbodyBullet = objBullet.GetComponent<Rigidbody>();
+                        rigidbodyBullet.AddForce(transform.forward * 300);
+                        m_CurBulletCount--;
+                    }
+                }
                 return true;
             }
         }

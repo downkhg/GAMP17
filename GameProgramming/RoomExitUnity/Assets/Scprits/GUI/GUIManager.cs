@@ -12,6 +12,8 @@ public class GUIManager : MonoBehaviour
     public GUIIventory m_guiInventory;
     public GameObject m_objPopupLayer;
 
+    public GUIStatusBar m_guiBulletCount;
+
     public void ShowPopupLayer()
     {
 
@@ -64,7 +66,8 @@ public class GUIManager : MonoBehaviour
     public void SetStatus(E_SCENCE_STATUS status)
     {
         //객체가 존재하지않는 경우를 감안하여 장면이 바뀔때 확인한다.
-        if (m_cGameManager) m_cGameManager = GameManager.GetInstance();
+        if (m_cGameManager == null) 
+            m_cGameManager = GameManager.GetInstance();
         Time.timeScale = 0;
         switch (status)
         {
@@ -77,7 +80,7 @@ public class GUIManager : MonoBehaviour
                 break;
             case E_SCENCE_STATUS.PLAY:
                 Time.timeScale = 1;
-                m_cGameManager.InitRoomObject();
+                //m_cGameManager.InitRoomObject();
 
                
                 break;
@@ -102,6 +105,9 @@ public class GUIManager : MonoBehaviour
             case E_SCENCE_STATUS.PLAY:
                 Player player = m_cGameManager.m_cPlayer;
                 SetTimmer(player.m_nTimmerCount, player.m_nMaxTimmer);
+                Gun gun = player.m_cGun;
+
+                m_guiBulletCount.SetStatus(gun.CurBulletCount, gun.MaxBulletCount);
 
                 if (Input.GetKeyDown(KeyCode.I))
                 {
