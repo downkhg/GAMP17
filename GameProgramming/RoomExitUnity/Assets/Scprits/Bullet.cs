@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     {
         m_Gun = gun;
         m_fRange = gun.Range;
+        m_vStartPos = this.transform.position;
     }
 
     private void Start()

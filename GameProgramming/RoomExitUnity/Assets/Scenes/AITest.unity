@@ -903,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 6698238438693888860, guid: 33fc6d14f4ce36941955a718f9186ec7,
         type: 3}
       propertyPath: m_MaxBulletCount
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6698238438693888860, guid: 33fc6d14f4ce36941955a718f9186ec7,
         type: 3}
@@ -1486,7 +1486,7 @@ PrefabInstance:
     - target: {fileID: 1331495822092734600, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
       propertyPath: m_MaxBulletCount
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1331495822092734600, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}

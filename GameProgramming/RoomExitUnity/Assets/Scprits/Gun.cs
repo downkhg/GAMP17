@@ -25,9 +25,9 @@ public class Gun : MonoBehaviour
         m_queBullet = new Queue<GameObject>();
         for(int i = 0; i < m_MaxBulletCount; i++)
         {
-            GameObject gameObject = Instantiate(prefapsBullet, Vector3.zero, Quaternion.identity);
-            gameObject.SetActive(false);
-            m_queBullet.Enqueue(gameObject);
+            GameObject objBullet = Instantiate(prefapsBullet, Vector3.zero, Quaternion.identity);
+            objBullet.name = string.Format("{0}{1}", prefapsBullet.name, i);
+            EnqueBullet(objBullet);
         }
         Reload();
     }
@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
     { 
         gameObject.SetActive(false);
         gameObject.transform.position = Vector3.zero;
-        m_queBullet.Enqueue(this.gameObject);
+        m_queBullet.Enqueue(gameObject);
         Debug.Log(string.Format("EnqueBullet({0}):{1}", m_queBullet.Count, gameObject.name));
     }
 
@@ -78,6 +78,7 @@ public class Gun : MonoBehaviour
                     {
                         bullet.Initialize(this);
                         Rigidbody rigidbodyBullet = objBullet.GetComponent<Rigidbody>();
+                        rigidbodyBullet.velocity = Vector3.zero;
                         rigidbodyBullet.AddForce(transform.forward * 300);
                         m_CurBulletCount--;
                     }

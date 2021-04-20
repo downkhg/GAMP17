@@ -72,7 +72,8 @@ public class AIController : Controller
             case E_AI_STATE.ATTAK:
                 m_navMashAgent.SetDestination(this.transform.position);
                 m_sAttackTimmer = new Timmer(1);
-                Player.Attack();
+                if (!Player.Attack())
+                    Player.m_cGun.Reload();
                 m_sAttackTimmer.StartTimmer();
                 break;
             case E_AI_STATE.MOVE:
