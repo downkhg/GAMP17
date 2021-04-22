@@ -268,7 +268,7 @@ public class AIController : Controller
         Vector3 vPos = transform.position;
         vPos.y = Player.transform.position.y;
         Ray ray = new Ray(vPos, transform.forward);
-        Debug.DrawLine(vPos, vPos + ray.direction * dist);
+        Debug.DrawLine(vPos, vPos + ray.direction * dist, Color.yellow);
         return Physics.Raycast(ray, dist, 1 << LayerMask.NameToLayer(strLayerName));
     }
 

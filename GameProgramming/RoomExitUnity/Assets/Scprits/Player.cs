@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     public float AttakRange { get { return m_fAttackRange; } }
 
     public Gun m_cGun;
-    
+    public GUIStatusBar m_guiBulletBar;
+    public bool isWorldSpace = false;
 
     public Collider m_colliderTarget;
 
@@ -113,18 +114,30 @@ public class Player : MonoBehaviour
         return m_cGun.Shot();
     }
 
-    void PrefabBullet()
-    {
-        GameObject prefapsBullet = Resources.Load("Prefabs/Bullet") as GameObject;
-        GameObject objBullet = Instantiate(prefapsBullet, transform.position, transform.localRotation);
-        Rigidbody rigidbodyBullet = objBullet.GetComponent<Rigidbody>();
-        rigidbodyBullet.AddForce(transform.forward * 300);
-    }
+    //void PrefabBullet()
+    //{
+    //    GameObject prefapsBullet = Resources.Load("Prefabs/Bullet") as GameObject;
+    //    GameObject objBullet = Instantiate(prefapsBullet, transform.position, transform.localRotation);
+    //    Rigidbody rigidbodyBullet = objBullet.GetComponent<Rigidbody>();
+    //    rigidbodyBullet.AddForce(transform.forward * 300);
+    //}
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (m_guiBulletBar)
+        {
+            if(!isWorldSpace)
+            {
+                GameManager gameManager = GameManager.GetInstance();
+                Vector3 vScreenPos = gameManager.m_cCamera.WorldToScreenPoint(this.transform.position);
+                RectTransform rectTransform = m_guiBulletBar.GetComponent<RectTransform>();
+
+                rectTransform.position = vScreenPos;
+            }
+
+            m_guiBulletBar.SetStatus(m_cGun.CurBulletCount, m_cGun.MaxBulletCount);
+        }
     }
 
     private void FixedUpdate()
