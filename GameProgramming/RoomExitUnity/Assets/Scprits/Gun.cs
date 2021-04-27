@@ -32,6 +32,24 @@ public class Gun : MonoBehaviour
         Reload();
     }
 
+    public void ReleaseBullet()
+    {
+        if (m_queBullet == null) { Debug.LogError("que is null"); return; }
+        while(m_queBullet != null && m_queBullet.Count > 0)
+        {
+            Debug.Log("ReleaseBulletCount:" + m_queBullet.Count);
+            GameObject objDel = m_queBullet.Dequeue();
+            if (objDel)
+            {
+                Debug.Log("ReleaseBulletName:" + objDel.name);
+                Destroy(objDel);
+            }
+            else
+                Debug.LogError("ReleaseBullet !?!?!:");
+        }
+        //m_queBullet.Clear();
+    }
+
     public void EnqueBullet(GameObject gameObject)
     { 
         gameObject.SetActive(false);
@@ -99,5 +117,11 @@ public class Gun : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Gun::OnDestroy:"+this.transform.parent.gameObject.name);
+        ReleaseBullet();
     }
 }

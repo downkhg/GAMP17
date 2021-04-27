@@ -652,6 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cPlayer: {fileID: 1908428766}
+  m_cMonster: {fileID: 159208152}
   m_cGuiManager: {fileID: 1951496968}
   m_colliderBox: {fileID: 0}
   m_cItemManager: {fileID: 0}

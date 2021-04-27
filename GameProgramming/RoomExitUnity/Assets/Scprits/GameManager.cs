@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Player m_cPlayer;
+    public Player m_cMonster;
     public GUIManager m_cGuiManager;
     public BoxCollider m_colliderBox;
     public ItemManager m_cItemManager;
@@ -84,7 +85,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            EvnetAppExit();
+        }
+    }
+
+    void EvnetAppExit()
+    {
+        m_cPlayer.m_cGun.ReleaseBullet();
+        m_cMonster.m_cGun.ReleaseBullet();
+        Application.Quit();
+        Debug.Log("EvnetAppExit()");
     }
 
     void EventCheckGameOver()
