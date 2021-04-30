@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : Controller
 {
+    SimpleRigidBody m_cSimpleRigidBody;
     // Start is called before the first frame update
     void Start()
     {
-       
+        m_cSimpleRigidBody = GetComponent<SimpleRigidBody>();
     }
 
     // Update is called once per frame
@@ -16,10 +17,12 @@ public class PlayerController : Controller
         if (Input.GetKey(KeyCode.UpArrow))
         {
             Translate(Vector3.forward, Player.Speed);
+            //m_cSimpleRigidBody.Translate(transform.forward, Player.Speed);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             Translate(Vector3.back, Player.Speed);
+            //m_cSimpleRigidBody.Translate(transform.forward * -1, Player.Speed);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -35,7 +38,7 @@ public class PlayerController : Controller
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump(Rigidbody, Player.JumpPower);
+            m_cSimpleRigidBody.AddForce(Vector3.up, Player.JumpPower);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {

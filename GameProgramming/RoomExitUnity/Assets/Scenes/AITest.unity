@@ -244,28 +244,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5660602770243670650}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &348008648
-NavMeshAgent:
+--- !u!114 &348008646
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348008644}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfafd8419e4c2042b1ec689c99c91b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fGravity: 9.8
+  m_fGravityDir: {x: 0, y: -1, z: 0}
+  m_fSpeed: 0
+  m_vVelocity: {x: 0, y: 0, z: 0}
+  m_fPower: 0
+  m_isGround: 0
+  m_isPreCollion: 0
 --- !u!1 &509055443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1276,11 @@ PrefabInstance:
       propertyPath: m_listScence.Array.data[4]
       value: 
       objectReference: {fileID: 565922895}
+    - target: {fileID: 3662851963138993481, guid: 7320268a65ad64f4199fa71b08115647,
+        type: 3}
+      propertyPath: m_eCurStatus
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3662851963138993482, guid: 7320268a65ad64f4199fa71b08115647,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1440,7 +1442,7 @@ GameObject:
   - component: {fileID: 1552809791}
   - component: {fileID: 1552809790}
   - component: {fileID: 1552809789}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,7 +1628,7 @@ GameObject:
   - component: {fileID: 1990406490}
   - component: {fileID: 1990406489}
   - component: {fileID: 1990406488}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Terrain (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1813,10 +1815,25 @@ PrefabInstance:
       propertyPath: m_guiBulletBar
       value: 
       objectReference: {fileID: 1463210663}
+    - target: {fileID: 622550455064936360, guid: 3a5aa645b67858747956aea66d842313,
+        type: 3}
+      propertyPath: m_fJumpPower
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 622550455064936363, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 622550455064936363, guid: 3a5aa645b67858747956aea66d842313,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 622550455064936363, guid: 3a5aa645b67858747956aea66d842313,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1331495822092734600, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
@@ -1891,17 +1908,17 @@ PrefabInstance:
     - target: {fileID: 5660602769597977029, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.68
       objectReference: {fileID: 0}
     - target: {fileID: 5660602769597977029, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 5660602769597977029, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10.97
       objectReference: {fileID: 0}
     - target: {fileID: 5660602769597977029, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
@@ -1968,5 +1985,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5660602769597977031, guid: 3a5aa645b67858747956aea66d842313, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3a5aa645b67858747956aea66d842313, type: 3}
