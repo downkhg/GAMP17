@@ -263,6 +263,7 @@ MonoBehaviour:
   m_fPower: 0
   m_isGround: 0
   m_isPreCollion: 0
+  m_vGroudPos: {x: 0, y: 0, z: 0}
 --- !u!1 &509055443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1914,7 @@ PrefabInstance:
     - target: {fileID: 5660602769597977029, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 5660602769597977029, guid: 3a5aa645b67858747956aea66d842313,
         type: 3}
