@@ -4,12 +4,12 @@ public class SimpleRigidBody : MonoBehaviour
 {
     public float m_fGravity = 9.8f;
     public Vector3 m_fGravityDir = Vector3.down;
-    public float m_fSpeed;
     public Vector3 m_vVelocity;
-    public float m_fPower;
+
     public bool m_isGround = false;
-    public bool m_isPreCollion = false;
     public Vector3 m_vGroudPos;
+
+    public LayerMask m_sLayerMask;
    
     public void AddForce(Vector3 dir, float power)
     {
@@ -28,166 +28,65 @@ public class SimpleRigidBody : MonoBehaviour
 
     void ProcessGravity()
     {
-        float fDeltaTime = Time.deltaTime;
         Vector3 vPos = transform.position;
-        
+        float fRad = 0.5f;
+        Vector3 vSpherePos = vPos;
+        vSpherePos.y += fRad;
 
-        //bool isCollision = GroundCheckRay(vPos);
-        bool isCollision = GroundCheckShpre(vPos, m_fGravity * Time.deltaTime);
-        //bool isCollision = GroundCheckCapsule(vPos, 0.5f);
-
-        if (!m_isGround)
-            m_vVelocity += m_fGravityDir * m_fGravity;
-
-        transform.position += m_vVelocity * fDeltaTime;
-
-        m_isPreCollion = isCollision;
-    }
-
-    bool GroundCheckRay(Vector3 vPos)
-    {
-        float fDist = 999999.0f;
-        
-        Ray ray = new Ray(vPos, m_fGravityDir);
-        RaycastHit raycastHit;
-        float fGroundY = -fDist;
+        //바닥과의 충돌체크하여 현재 충돌상태를 확인한다.
+        Collider[] collider = Physics.OverlapSphere(vSpherePos, fRad, m_sLayerMask);
         bool isCollision = false;
-        if (Physics.Raycast(ray, out raycastHit, fDist))
-        {
-            m_vGroudPos = raycastHit.point;
+        if (collider.Length > 0)
             isCollision = true;
-            Debug.DrawLine(vPos, vPos + m_fGravityDir * fDist, Color.green);
+
+        Vector3 vGravity = new Vector3();
+        if(!isCollision && !m_isGround)
+        {
+            vGravity = m_fGravityDir * m_fGravity;
+        }
+        m_vVelocity += vGravity;
+        transform.position += m_vVelocity * Time.deltaTime;
+        
+        //물체의 위치가 이동한 뒤에는 이미 바닥에 꺼져있을수도 있으므로
+        //미래의 위치를 충돌체크해 상태를 판단한다.
+        Ray ray = new Ray(transform.position, m_vVelocity.normalized);
+        float fDist = m_vVelocity.magnitude * Time.deltaTime;
+        RaycastHit raycastHit;
+        Vector3 vGroundPos = ray.origin;
+        bool isNextCollision;
+
+        if (Physics.Raycast(ray, out raycastHit, fDist, m_sLayerMask))
+        {
+            vGroundPos = raycastHit.point;
+            isNextCollision = true;
         }
         else
-            Debug.DrawLine(vPos, vPos + m_fGravityDir * fDist, Color.red);
+        {
+            vGroundPos.y = -99999.0f;//바닥위치를 꺼트린다.
+            isNextCollision = false;
+        }
 
-        //바닥이 없으면 충돌이 이상해짐.
-        //Enter: 이전상태가 충돌되고, 현재상태가 충돌되지않음.
-        if (m_isPreCollion && !isCollision)
+        //Enter: 현재상태가 충돌되지않고, 다음상태가 충돌됨.
+        if (!isCollision && isNextCollision)
         {
             m_isGround = true;
             SetEnterGround(transform.position, m_vGroudPos.y);
             Debug.Log("Ground Enter!");
         }
-        //Exit: 이전상태가 충돌이 아니고, 현재상태가 충돌.
-        else if (!m_isPreCollion && isCollision)
+        //Exit: 이전상태가 충돌되고, 다음상태가 충돌되지않음.
+        else if (isCollision && !isNextCollision)
         {
             m_isGround = false;
             Debug.Log("Ground Exit!");
         }
-        else if (!m_isPreCollion && !isCollision)
-        {
-            vPos.y = -fDist;
-            m_vGroudPos = vPos;
-        }
-
-
-        return isCollision;
-    }
-
-    bool GroundCheckShpre(Vector3 vPos, float rad)
-    {
-        bool isCollision = false;
-
-        Collider[] collisions = Physics.OverlapSphere(vPos, rad, 1 << LayerMask.NameToLayer("Ground"));
-        if (collisions.Length > 0)
-        {
-            isCollision = true;
-            //Debug.DrawLine(vPos, vPos + m_fGravityDir * fDist, Color.green);
-        }
-        //else
-        //Debug.DrawLine(vPos, vPos + m_fGravityDir * fDist, Color.red);
-
-        //Ray ray = new Ray(vPos, m_fGravityDir);
-        //RaycastHit raycastHit;
-        //if (Physics.Raycast(ray, out raycastHit, m_fGravity))
-        //{
-        //    m_vGroudPos = raycastHit.point;
-        //}
-
-        Vector3 vRayPos = GetComponent<Controller>().Player.transform.position;
-        Ray ray = new Ray(vRayPos, m_fGravityDir);
-        RaycastHit raycastHit;
-        bool bRayCheck = false;
-        if (Physics.Raycast(ray, out raycastHit, m_fGravity))
-        {
-            m_vGroudPos = raycastHit.point;
-            bRayCheck = true;
-            Debug.DrawLine(vRayPos, vRayPos + m_fGravityDir * m_fGravity, Color.green);
-        }
-        else
-        {
-            m_vGroudPos.y = -99999.0f;
-            Debug.DrawLine(vRayPos, vRayPos + m_fGravityDir * m_fGravity, Color.red);
-            SetEnterGround(transform.position, m_vGroudPos.y);
-        }
-
-        //바닥이 없으면 충돌이 이상해짐.
-        //Enter: 이전상태가 충돌되지않고, 현재 상태가 충돌됨.
-        if (m_isPreCollion && !isCollision)
-        {
-            m_isGround = true;
-            SetEnterGround(transform.position, 0);
-            Debug.Log("Ground Enter!");
-        }
-        //Exit: 이전상태가 충돌되고, 현재상태가 충돌안됨.
-        else if (!m_isPreCollion && isCollision)
-        {
-            m_isGround = false;
-            Debug.Log("Ground Exit!");
-        }
-        else if(!m_isPreCollion && !isCollision)
-        {
-            Debug.LogError("Ground Stay!");
-           
-           
-        }
-
-        return isCollision;
-    }
-
-    bool GroundCheckCapsule(Vector3 vPos, float rad)
-    {
-        Ray ray = new Ray(vPos, m_fGravityDir);
-        bool isCollision = false;
-        Vector3 vPosDown = vPos + Vector3.up * rad;
-        Vector3 vPosUp = vPosDown + Vector3.up;
-        Collider[] collisions = Physics.OverlapCapsule(vPosUp, vPosDown, rad, 1 << LayerMask.NameToLayer("Ground"));
-        if (collisions.Length > 0)
-        {
-            isCollision = true;
-            //Debug.DrawLine(vPos, vPos + m_fGravityDir * fDist, Color.green);
-        }
-        //else
-        //Debug.DrawLine(vPos, vPos + m_fGravityDir * fDist, Color.red);
-
-
-        //Enter: 이전상태가 충돌되지않고, 현재 상태가 충돌됨.      
-        if (m_isPreCollion && !isCollision)
-        {
-            m_isGround = true;
-            SetEnterGround(transform.position, 0);
-            Debug.Log("Ground Enter!");
-        }
-        //Exit: 이전상태가 충돌되고, 현재상태가 충돌안됨.
-        else if (!m_isPreCollion && isCollision)
-        {
-            m_isGround = false;
-            Debug.Log("Ground Exit!");
-        }
-
-        return isCollision;
     }
 
     private void OnDrawGizmos()
     {
         //Gizmos.DrawSphere(this.transform.position, m_fGravity * Time.deltaTime);
         float rad = 0.5f;
-        Vector3 vPos = transform.position;
-        Vector3 vPosDown = vPos + Vector3.up * rad;
-        Vector3 vPosUp = vPosDown + Vector3.up;
+        Vector3 vPosDown = transform.position + Vector3.up * rad;
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(vPosUp, rad);
         Gizmos.DrawWireSphere(vPosDown, rad);
     }
 
@@ -214,18 +113,5 @@ public class SimpleRigidBody : MonoBehaviour
         m_vVelocity = Vector3.zero;
         vPos.y = groundY;
         transform.position = vPos;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("OnCollisionEnter:"+collision.gameObject.name);
-        m_isGround = true;
-        SetEnterGround(transform.position,0);
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("OnCollisionExit:" + collision.gameObject.name);
-        m_isGround = false;
     }
 }
