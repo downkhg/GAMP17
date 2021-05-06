@@ -150,7 +150,7 @@ public class AIController : Controller
                         if (fDist > Player.AttakRange)
                         {
                             m_navMashAgent.SetDestination(vTargetPos);
-                            Rigidbody.velocity = Vector3.zero;
+                            //Rigidbody.velocity = Vector3.zero;
                         }
                         //Translate(Vector3.forward,Dynamic.Speed);
                         else

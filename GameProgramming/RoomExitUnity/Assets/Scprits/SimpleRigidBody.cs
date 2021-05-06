@@ -23,21 +23,27 @@ public class SimpleRigidBody : MonoBehaviour
     private void FixedUpdate()
     {
         ProcessGravity();
-        //ProcessNoCollisionGravity();
+        //ProcessNoCollisionGravity(0);
     }
 
     void ProcessGravity()
     {
+        int nLayer = 1<<LayerMask.NameToLayer("Ground");
         Vector3 vPos = transform.position;
         float fRad = 0.5f;
         Vector3 vSpherePos = vPos;
         vSpherePos.y += fRad;
+        float fTime = Time.deltaTime;
 
         //바닥과의 충돌체크하여 현재 충돌상태를 확인한다.
-        Collider[] collider = Physics.OverlapSphere(vSpherePos, fRad, m_sLayerMask);
+        Collider[] colliders = Physics.OverlapSphere(vSpherePos, fRad, nLayer);
         bool isCollision = false;
-        if (collider.Length > 0)
+
+        if (colliders.Length > 0)
+        {
+            Debug.Log("collider:"+ colliders[0].name);
             isCollision = true;
+        }
 
         Vector3 vGravity = new Vector3();
         if(!isCollision && !m_isGround)
@@ -45,17 +51,17 @@ public class SimpleRigidBody : MonoBehaviour
             vGravity = m_fGravityDir * m_fGravity;
         }
         m_vVelocity += vGravity;
-        transform.position += m_vVelocity * Time.deltaTime;
+        transform.position += m_vVelocity * fTime;
         
         //물체의 위치가 이동한 뒤에는 이미 바닥에 꺼져있을수도 있으므로
         //미래의 위치를 충돌체크해 상태를 판단한다.
         Ray ray = new Ray(transform.position, m_vVelocity.normalized);
-        float fDist = m_vVelocity.magnitude * Time.deltaTime;
+        float fDist = m_vVelocity.magnitude * fTime;
         RaycastHit raycastHit;
         Vector3 vGroundPos = ray.origin;
         bool isNextCollision;
 
-        if (Physics.Raycast(ray, out raycastHit, fDist, m_sLayerMask))
+        if (Physics.Raycast(ray, out raycastHit, fDist, nLayer))
         {
             vGroundPos = raycastHit.point;
             isNextCollision = true;

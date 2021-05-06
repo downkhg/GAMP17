@@ -22,14 +22,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Skill" Collapsed="true">
-    <Position X="1" Y="5.5" Width="1.5" />
+    <Position X="7.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>main.cpp</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EffectHill" Collapsed="true">
-    <Position X="1" Y="6.75" Width="1.5" />
+  <Class Name="EffectHill">
+    <Position X="7.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>main.cpp</FileName>
@@ -41,7 +41,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Item::E_ITEM_KIND" Collapsed="true">
+      <Enum Name="Item::E_ITEM_KIND">
         <TypeIdentifier>
           <NewMemberFileName>main.cpp</NewMemberFileName>
         </TypeIdentifier>
@@ -53,12 +53,12 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ItemManager">
-    <Position X="9" Y="5.5" Width="1.5" />
+    <Position X="11" Y="0.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="ItemManager::E_ITEM_LIST" Collapsed="true">
+      <Enum Name="ItemManager::E_ITEM_LIST">
         <TypeIdentifier>
           <NewMemberFileName>main.cpp</NewMemberFileName>
         </TypeIdentifier>
@@ -69,8 +69,23 @@
       <FileName>main.cpp</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameManager" Collapsed="true">
-    <Position X="6.25" Y="5" Width="1.5" />
+  <Class Name="GameManager">
+    <Position X="13" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="GameManager::E_STAGE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>main.cpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="GameManager::E_MONSTER" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>main.cpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>QAQgCAAAgAABgAAAAAAEIAAEAAAAAIAAAAAKAAAAAAA=</HashCode>
       <FileName>main.cpp</FileName>
